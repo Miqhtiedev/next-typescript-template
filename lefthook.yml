@@ -1,0 +1,11 @@
+pre-commit:
+  parallel: true
+  commands:
+    prettier:
+      run: pnpm prettier --ignore-unknown --check {staged_files}
+    eslint:
+      glob: "*.{js,cjs,mjs,jsx,ts,tsx}"
+      run: pnpm eslint --max-warnings=0 {staged_files}
+    prisma:
+      glob: "*.prisma"
+      run: pnpm prisma format
